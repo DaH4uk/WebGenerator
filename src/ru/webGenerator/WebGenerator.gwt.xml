@@ -1,0 +1,32 @@
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.0//EN"
+        "http://google-web-toolkit.googlecode.com/svn/releases/2.0/distro-source/core/src/gwt-module.dtd">
+<module rename-to="WebGenerator">
+
+    <!-- Inherit the core Web Toolkit stuff.                  -->
+    <inherits name='com.google.gwt.user.User'/>
+
+    <!-- Other module inherits -->
+    <inherits name='com.sencha.gxt.ui.GXT' /> <!-- <<<< Inherits the GXT Module -->
+
+    <!-- GXT stylesheet -->
+    <stylesheet src="reset.css" /> <!-- <<<< Sets up the GXT default stylesheet -->
+
+     <!--Neptune Theme -->
+    <!--<inherits name="com.sencha.gxt.theme.gray.Gray" />-->
+    <inherits name="com.sencha.gxt.theme.triton.Theme" />
+
+
+    <!-- Specify the app entry point class.                   -->
+    <entry-point class='ru.webGenerator.client.WebGenerator'/>
+
+
+    <!-- Specify the app servlets.                   -->
+    <servlet path='/WebGeneratorService' class='ru.webGenerator.server.WebGeneratorServiceImpl'/>
+
+
+    <!-- Specify the paths for translatable code -->
+    <source path='client' />
+    <source path='shared' />
+    <source path='server' />
+
+</module>

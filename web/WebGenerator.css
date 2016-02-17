@@ -1,0 +1,49 @@
+/** Add css rules here for your application. */
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+body, td, a, div, .p {
+    font-family: arial, sans-serif
+}
+
+.main {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.label-text {
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.tab-style {
+    background-color: #5fa2dd;
+}
+
+.red {
+    color: #ff0000;
+}
+
+.green {
+    color: #008000;
+}
+
+.label-add{
+    font-size: 12px;
+}
+
+.labels {
+    font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: #404040;
+    width: auto!important;
+    float: none!important;
+    clear: none!important;
+    display: inline!important;
+}
+
