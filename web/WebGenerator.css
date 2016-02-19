@@ -15,9 +15,16 @@ body, td, a, div, .p {
     margin: 0 auto;
 }
 
+
 .label-text {
     text-decoration: underline;
     font-size: 12px;
+}
+
+.sub-labels {
+    font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font-size: 9px;
+    color: #404040;
 }
 
 .tab-style {
