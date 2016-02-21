@@ -13,6 +13,7 @@ import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.form.*;
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 /**
  * Created by DaH4uk on 18.02.2016.
@@ -21,6 +22,7 @@ public class OrderField implements IsWidget {
 
     private VerticalLayoutContainer generationContainer;
     private int marginLeft = WebGenerator.marginLeft;
+
 
     @Override
     public Widget asWidget() {

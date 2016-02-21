@@ -19,19 +19,20 @@ import com.sencha.gxt.widget.core.client.form.TextField;
  */
 public class Error651Tab implements IsWidget {
 
-    private VerticalLayoutContainer netCableDisconnectedTab;
+    private VerticalLayoutContainer container;
     private int marginLeft = WebGenerator.marginLeft;
 
     @Override
     public Widget asWidget() {
-        if (netCableDisconnectedTab == null) {
-            netCableDisconnectedTab = new VerticalLayoutContainer();
+        if (container == null) {
+            container = new VerticalLayoutContainer();
 
-            netCableDisconnectedTab.setBorders(true);
+
+            container.setStyleName("borders");
 
             Label textErrorLabel = new Label("Текст ошибки:");
             textErrorLabel.addStyleName("label-text");
-            netCableDisconnectedTab.add(textErrorLabel, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(10, 0, 0, marginLeft)));
+            container.add(textErrorLabel, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(10, 0, 0, marginLeft)));
 
 
             Radio netCableDisconnectedRadio = new Radio();
@@ -51,7 +52,7 @@ public class Error651Tab implements IsWidget {
             group.add(netCableDisconnectedRadio);
             group.add(remotePcNotAnsweredRadio);
 
-            netCableDisconnectedTab.add(radios, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(0, 0, 5, marginLeft)));
+            container.add(radios, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(0, 0, 5, marginLeft)));
 
 
             Label operStatusLabel = new Label("Oper status:");
@@ -67,8 +68,8 @@ public class Error651Tab implements IsWidget {
             CssFloatLayoutContainer labels = new CssFloatLayoutContainer();
             labels.add(operStatusLabel, new CssFloatLayoutContainer.CssFloatData(-1, new Margins(4, 75, 0, marginLeft)));
             labels.add(macVisibleLabel, new CssFloatLayoutContainer.CssFloatData(-1, new Margins(4, 35, 0, 0)));
-            labels.add(commutatorTypeLabel, new CssFloatLayoutContainer.CssFloatData(-1, new Margins(4, 0, 0, 20)));
-            netCableDisconnectedTab.add(labels, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(0, 0, 2, 0)));
+            labels.add(commutatorTypeLabel, new CssFloatLayoutContainer.CssFloatData(-1, new Margins(4, 0, 0, 5)));
+            container.add(labels, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(0, 0, 2, 0)));
 
 
             Radio operStatusDownRadio = new Radio();
@@ -125,7 +126,7 @@ public class Error651Tab implements IsWidget {
             group3.add(comControlledNoRadio);
             group3.add(comControlledYesRadio);
 
-            netCableDisconnectedTab.add(radios1, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(0, 0, 3, marginLeft)));
+            container.add(radios1, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(0, 0, 3, marginLeft)));
 
             Label breakLabel = new Label("Обрыв:");
             breakLabel.addStyleName("label-text");
@@ -136,9 +137,9 @@ public class Error651Tab implements IsWidget {
 
             CssFloatLayoutContainer labels2 = new CssFloatLayoutContainer();
             labels2.add(breakLabel, new CssFloatLayoutContainer.CssFloatData(-1, new Margins(4, 240, 0, 0)));
-            labels2.add(macsOfNeighborsLabel, new CssFloatLayoutContainer.CssFloatData(-1, new Margins(4, 0, 0, 20)));
+            labels2.add(macsOfNeighborsLabel, new CssFloatLayoutContainer.CssFloatData(-1, new Margins(4, 0, 0, 15)));
 
-            netCableDisconnectedTab.add(labels2, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(0, 0, 10, marginLeft)));
+            container.add(labels2, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(0, 0, 10, marginLeft)));
 
 
             com.sencha.gxt.widget.core.client.form.CheckBox breakYesCheck = new CheckBox();
@@ -179,15 +180,15 @@ public class Error651Tab implements IsWidget {
             firstPairBreak.add(macNeighAdrNoRadio, new CssFloatLayoutContainer.CssFloatData(-1, new Margins(0, 0, 0, 40)));
             firstPairBreak.add(macNeighAdrYesRadio, new CssFloatLayoutContainer.CssFloatData(-1, new Margins(0, 0, 0, 0)));
 
-            netCableDisconnectedTab.add(firstPairBreak, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(0, 0, 10, marginLeft)));
+            container.add(firstPairBreak, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(0, 0, 10, marginLeft)));
 
 
             Label macBelongsLabel = new Label("Мак принадлежит клиенту?");
             macBelongsLabel.addStyleName("label-text");
 
 
-            netCableDisconnectedTab.add(breakYesCheck, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(-10, 0, 0, marginLeft)));
-            netCableDisconnectedTab.add(macBelongsLabel, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(-10, 0, 0, marginLeft + 300)));
+            container.add(breakYesCheck, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(-10, 0, 0, marginLeft)));
+            container.add(macBelongsLabel, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(-10, 0, 0, marginLeft + 300)));
 
 
             com.sencha.gxt.widget.core.client.form.CheckBox secondPairBreakCheck = new CheckBox();
@@ -218,7 +219,7 @@ public class Error651Tab implements IsWidget {
             secondPairBreak.add(macBelongsNoRadio, new CssFloatLayoutContainer.CssFloatData(-1, new Margins(15, 0, 0, 40)));
             secondPairBreak.add(macBelongsYesRadio, new CssFloatLayoutContainer.CssFloatData(-1, new Margins(15, 0, 0, 5)));
 
-            netCableDisconnectedTab.add(secondPairBreak, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(0, 0, 10, marginLeft + 88)));
+            container.add(secondPairBreak, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(0, 0, 10, marginLeft + 88)));
 
 
             CheckBox portDoesNotRespondCheck = new CheckBox();
@@ -228,8 +229,8 @@ public class Error651Tab implements IsWidget {
             portRebootedCheck.setBoxLabel("Порт перезапускали");
 
 
-            netCableDisconnectedTab.add(portDoesNotRespondCheck, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(20, 0, 0, marginLeft)));
-            netCableDisconnectedTab.add(portRebootedCheck, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(-15, 0, 0, marginLeft + 300)));
+            container.add(portDoesNotRespondCheck, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(20, 0, 0, marginLeft)));
+            container.add(portRebootedCheck, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(-15, 0, 0, marginLeft + 300)));
 
 
             CheckBox portWorksOnCheck = new CheckBox();
@@ -243,8 +244,8 @@ public class Error651Tab implements IsWidget {
             portWorksOnCombo.setValue("10 Мбит/с");
             portWorksOnCombo.setWidth(178);
 
-            netCableDisconnectedTab.add(portWorksOnCheck, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(20, 0, 0, marginLeft)));
-            netCableDisconnectedTab.add(portWorksOnCombo, new VerticalLayoutContainer.VerticalLayoutData(0.7, 0, new Margins(-20, 0, 0, marginLeft + 200)));
+            container.add(portWorksOnCheck, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(20, 0, 0, marginLeft)));
+            container.add(portWorksOnCombo, new VerticalLayoutContainer.VerticalLayoutData(0.7, 0, new Margins(-20, 0, 0, marginLeft + 200)));
 
             CheckBox noSessionsNeighborsCheck = new CheckBox();
             noSessionsNeighborsCheck.setBoxLabel("Нет сессий соседей");
@@ -258,9 +259,9 @@ public class Error651Tab implements IsWidget {
             noSessionsNeighborsAdminCombo.setValue("Магистральный порт NO");
             noSessionsNeighborsAdminCombo.setWidth(20);
 
-            netCableDisconnectedTab.add(noSessionsNeighborsCheck, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(20, 0, 0, marginLeft)));
-            netCableDisconnectedTab.add(noSessionsNeighborsAdminCheck, new VerticalLayoutContainer.VerticalLayoutData(0.6, 0, new Margins(-10, 0, 0, marginLeft + 300)));
-            netCableDisconnectedTab.add(noSessionsNeighborsAdminCombo, new VerticalLayoutContainer.VerticalLayoutData(0.92, 0, new Margins(-20, 0, 0, marginLeft + 320)));
+            container.add(noSessionsNeighborsCheck, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(20, 0, 0, marginLeft)));
+            container.add(noSessionsNeighborsAdminCheck, new VerticalLayoutContainer.VerticalLayoutData(0.6, 0, new Margins(-10, 0, 0, marginLeft + 300)));
+            container.add(noSessionsNeighborsAdminCombo, new VerticalLayoutContainer.VerticalLayoutData(0.92, 0, new Margins(-20, 0, 0, marginLeft + 320)));
 
 
             CheckBox routerDefectiveCheck = new CheckBox();
@@ -269,17 +270,17 @@ public class Error651Tab implements IsWidget {
             CheckBox replacementIfNecessaryCheck = new CheckBox();
             replacementIfNecessaryCheck.setBoxLabel("Замена при необходимости");
 
-            netCableDisconnectedTab.add(routerDefectiveCheck, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(20, 0, 0, marginLeft)));
-            netCableDisconnectedTab.add(replacementIfNecessaryCheck, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(-15, 0, 0, marginLeft + 300)));
+            container.add(routerDefectiveCheck, new VerticalLayoutContainer.VerticalLayoutData(0.5, 0, new Margins(20, 0, 0, marginLeft)));
+            container.add(replacementIfNecessaryCheck, new VerticalLayoutContainer.VerticalLayoutData(1, 0, new Margins(-15, 0, 0, marginLeft + 300)));
 
             CheckBox problemPortsCheck = new CheckBox();
             problemPortsCheck.setBoxLabel("Клиент попал в отчет по проблемным портам");
 
-            netCableDisconnectedTab.add(problemPortsCheck, new VerticalLayoutContainer.VerticalLayoutData(0.6, -1, new Margins(20, 0, 0, marginLeft)));
+            container.add(problemPortsCheck, new VerticalLayoutContainer.VerticalLayoutData(0.6, -1, new Margins(20, 0, 0, marginLeft)));
 
-            netCableDisconnectedTab.setHeight(910);
+            container.setHeight(910);
         }
 
-        return netCableDisconnectedTab;
+        return container;
     }
 }

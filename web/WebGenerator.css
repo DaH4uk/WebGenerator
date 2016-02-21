@@ -15,10 +15,16 @@ body, td, a, div, .p {
     margin: 0 auto;
 }
 
-
 .label-text {
     text-decoration: underline;
-    font-size: 12px;
+    font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: #404040;
+    width: auto !important;
+    float: none !important;
+    clear: none !important;
+    display: inline !important;
 }
 
 .sub-labels {
@@ -31,6 +37,12 @@ body, td, a, div, .p {
     background-color: #5fa2dd;
 }
 
+.borders {
+    border-left: 1px solid #5fa2dd !important;
+    border-right: 1px solid #5fa2dd !important;
+
+}
+
 .red {
     color: #ff0000;
 }
@@ -39,7 +51,7 @@ body, td, a, div, .p {
     color: #008000;
 }
 
-.label-add{
+.label-add {
     font-size: 12px;
 }
 
@@ -48,9 +60,9 @@ body, td, a, div, .p {
     font-size: 13px;
     font-weight: 300;
     color: #404040;
-    width: auto!important;
-    float: none!important;
-    clear: none!important;
-    display: inline!important;
+    width: auto !important;
+    float: none !important;
+    clear: none !important;
+    display: inline !important;
 }
 

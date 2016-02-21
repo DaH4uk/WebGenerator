@@ -27,7 +27,7 @@ public class BreaksTab implements IsWidget {
         if (container == null) {
 
             container = new VerticalLayoutContainer();
-            container.setBorders(true);
+            container.setStyleName("borders");
 
             CheckBox breaksOnGnCheck = new CheckBox();
             breaksOnGnCheck.setBoxLabel("Разрывы на ГН");
@@ -36,8 +36,8 @@ public class BreaksTab implements IsWidget {
 
             HorizontalLayoutContainer breaksOnGnContainer = new HorizontalLayoutContainer();
 
-            breaksOnGnContainer.add(breaksOnGnCheck, new HorizontalLayoutData(0.3, 0, new Margins(20, 0, 0, 0)));
-            breaksOnGnContainer.add(breaksOnGnField, new HorizontalLayoutData(0.35, 0, new Margins(10, 0, 0, 0)));
+            breaksOnGnContainer.add(breaksOnGnCheck, new HorizontalLayoutData(0.2, 0, new Margins(20, 0, 0, 0)));
+            breaksOnGnContainer.add(breaksOnGnField, new HorizontalLayoutData(0.2, 0, new Margins(10, 0, 0, 10)));
 
             container.add(breaksOnGnContainer, new VerticalLayoutData(1, 0, new Margins(0, 0, 0, marginLeft)));
 
@@ -63,14 +63,14 @@ public class BreaksTab implements IsWidget {
             HorizontalLayoutContainer reasonContainer = new HorizontalLayoutContainer();
 
             reasonContainer.add(reasonLabel, new HorizontalLayoutData(0.3, 0, new Margins(30, 0, 0, 0)));
-            reasonContainer.add(reasonCombo, new HorizontalLayoutData(0.35, 0, new Margins(20, 0, 0, 0)));
+            reasonContainer.add(reasonCombo, new HorizontalLayoutData(0.35, 0, new Margins(20, 0, 0, 10)));
 
-            container.add(reasonContainer, new VerticalLayoutData(1, 0, new Margins(25, 0, 0, marginLeft)));
+            container.add(reasonContainer, new VerticalLayoutData(1, 0, new Margins(40, 0, 0, marginLeft)));
 
             CheckBox neighborsBreaks = new CheckBox();
             neighborsBreaks.setBoxLabel("У соседей > 3 разрывов в это же время");
 
-            container.add(neighborsBreaks, new VerticalLayoutData(1, 0, new Margins(85, 0, 0, marginLeft)));
+            container.add(neighborsBreaks, new VerticalLayoutData(1, 0, new Margins(60, 0, 0, marginLeft)));
 
             CheckBox errorsBreaks = new CheckBox();
             errorsBreaks.setBoxLabel("Δ ошибок > 0");
