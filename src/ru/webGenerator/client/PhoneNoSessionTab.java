@@ -55,10 +55,18 @@ public class PhoneNoSessionTab implements IsWidget {
             subContainer1.add(subHorizContainer, new VerticalLayoutData(1, 0.1, new Margins(10, 0, 0, 0)));
 
 
+            Label label = new Label("Заявки по разрывам формируются в разделе");
+            label.setStyleName("labels");
+            subContainer1.add(label, new VerticalLayoutData(1, 0.1, new Margins(100, 0, 0, 130)));
+
+            Label label1 = new Label("Интернет -> Разрывы -> Разрывы на ГН");
+            label1.setStyleName("labels");
+            subContainer1.add(label1, new VerticalLayoutData(1, 0.1, new Margins(5, 0, 0, 130)));
+
 
             CheckBox onMultipleChannelsCheck = new CheckBox();
-            onMultipleChannelsCheck.setBoxLabel("На нескольких каналах");
-            subContainer1.add(onMultipleChannelsCheck, new VerticalLayoutData(1, 0.1, new Margins(280, 0, 0, 0)));
+            onMultipleChannelsCheck.setBoxLabel("Адаптер перезагружали");
+            subContainer1.add(onMultipleChannelsCheck, new VerticalLayoutData(1, 0.1, new Margins(130, 0, 0, 0)));
 
 
 

@@ -54,8 +54,8 @@ public class WebGenerator implements EntryPoint, IsWidget {
             TabPanel phoneTabPanel = new TabPanel();
 
             phoneTabPanel.add(new PhoneNoSessionTab().asWidget(), "Нет сессии");
-            phoneTabPanel.add(new Label("Отсутствие вх/исх"), "Отсутствие вх/исх");
-            phoneTabPanel.add(new Label("Качество связи"), "Качество связи");
+            phoneTabPanel.add(new NoIncomingOutgoingTab().asWidget(), "Отсутствие вх/исх");
+            phoneTabPanel.add(new QualityOfCommunicationTab().asWidget(), "Качество связи");
             phoneTabPanel.add(new Label("IVR, АОН, время..."), "IVR, АОН, время...");
 
             phoneContainer.add(phoneTabPanel, new VerticalLayoutData(1, 1, new Margins(30, 0, 0, 0)));
