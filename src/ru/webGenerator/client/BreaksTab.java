@@ -1,5 +1,7 @@
 package ru.webGenerator.client;
 
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -22,6 +24,21 @@ public class BreaksTab implements IsWidget {
     private int marginLeft = WebGenerator.marginLeft;
 
 
+    static final  CheckBox breaksOnGnCheck = new CheckBox();
+    static final  TextField breaksOnGnField = new TextField();
+    static final SimpleComboBox<String> reasonCombo = new SimpleComboBox<>(new StringLabelProvider<>());
+    static final CheckBox neighborsBreaks = new CheckBox();
+    static final CheckBox errorsBreaks = new CheckBox();
+    static final CheckBox portFlopCheckBreaks = new CheckBox();
+    static final CheckBox stormControlBreaks = new CheckBox();
+    static final CheckBox stpBreaks = new CheckBox();
+    static final CheckBox whenMovmentOfCableCheck = new CheckBox();
+    static final CheckBox problemPortsBreaks = new CheckBox();
+    static final CheckBox defectiveRouterBreaks = new CheckBox();
+    static final CheckBox replacementRouterBreaks = new CheckBox();
+
+
+
     @Override
     public Widget asWidget() {
         if (container == null) {
@@ -29,10 +46,10 @@ public class BreaksTab implements IsWidget {
             container = new VerticalLayoutContainer();
             container.setStyleName("borders");
 
-            CheckBox breaksOnGnCheck = new CheckBox();
+
             breaksOnGnCheck.setBoxLabel("Разрывы на ГН");
 
-            TextField breaksOnGnField = new TextField();
+            breaksOnGnField.setEnabled(false);
 
             HorizontalLayoutContainer breaksOnGnContainer = new HorizontalLayoutContainer();
 
@@ -45,7 +62,6 @@ public class BreaksTab implements IsWidget {
             reasonLabel.setStyleName("label-text");
 
 
-            SimpleComboBox<String> reasonCombo = new SimpleComboBox<>(new StringLabelProvider<>());
             reasonCombo.setTriggerAction(ComboBoxCell.TriggerAction.ALL);
             reasonCombo.setEditable(true);
             reasonCombo.add("Admin-Reset");
@@ -67,49 +83,54 @@ public class BreaksTab implements IsWidget {
 
             container.add(reasonContainer, new VerticalLayoutData(1, 0, new Margins(40, 0, 0, marginLeft)));
 
-            CheckBox neighborsBreaks = new CheckBox();
             neighborsBreaks.setBoxLabel("У соседей > 3 разрывов в это же время");
 
             container.add(neighborsBreaks, new VerticalLayoutData(1, 0, new Margins(60, 0, 0, marginLeft)));
 
-            CheckBox errorsBreaks = new CheckBox();
             errorsBreaks.setBoxLabel("Δ ошибок > 0");
 
             container.add(errorsBreaks, new VerticalLayoutData(1, 0, new Margins(10, 0, 0, marginLeft)));
             
-            CheckBox portFlopCheckBreaks = new CheckBox();
             portFlopCheckBreaks.setBoxLabel("Есть записи в Port flop check (более 5 единовременных падений порта)");
 
             container.add(portFlopCheckBreaks, new VerticalLayoutData(1, 0, new Margins(10, 0, 0, marginLeft)));
 
-            CheckBox stormControlBreaks = new CheckBox();
             stormControlBreaks.setBoxLabel("Есть записи в Storm control");
 
             container.add(stormControlBreaks, new VerticalLayoutData(1, 0, new Margins(10, 0, 0, marginLeft)));
             
-            CheckBox stpBreaks = new CheckBox();
             stpBreaks.setBoxLabel("Есть записи в STP: \"New root selected\" более 5 в день");
 
             container.add(stpBreaks, new VerticalLayoutData(1, 0, new Margins(10, 0, 0, marginLeft)));
 
+            whenMovmentOfCableCheck.setBoxLabel("При движении кабеля линк не падает");
 
-            CheckBox problemPortsBreaks = new CheckBox();
+            container.add(whenMovmentOfCableCheck, new VerticalLayoutData(1, 0, new Margins(10, 0, 0, marginLeft)));
+
+
             problemPortsBreaks.setBoxLabel("Клиент попал в отчет по проблемным портам");
-
             container.add(problemPortsBreaks, new VerticalLayoutData(1, 0, new Margins(10, 0, 0, marginLeft)));
 
 
-
-            CheckBox defectiveRouterBreaks = new CheckBox();
             defectiveRouterBreaks.setBoxLabel("Роутер неисправен (напрямую все работает)");
 
-            container.add(defectiveRouterBreaks, new VerticalLayoutData(1, 0, new Margins(40, 0, 0, marginLeft)));
+            container.add(defectiveRouterBreaks, new VerticalLayoutData(1, 0, new Margins(30, 0, 0, marginLeft)));
 
-            CheckBox replacementRouterBreaks = new CheckBox();
             replacementRouterBreaks.setBoxLabel("Замена роутера при необходимости");
 
             container.add(replacementRouterBreaks, new VerticalLayoutData(1, 0, new Margins(10, 0, 0, marginLeft)));
 
+
+            breaksOnGnCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (breaksOnGnCheck.getValue()){
+                        breaksOnGnField.setEnabled(true);
+                    } else {
+                        breaksOnGnField.setEnabled(false);
+                    }
+                }
+            });
         }
         return container;
     }

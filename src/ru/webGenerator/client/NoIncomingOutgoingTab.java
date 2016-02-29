@@ -1,5 +1,7 @@
 package ru.webGenerator.client;
 
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -22,9 +24,31 @@ public class NoIncomingOutgoingTab implements IsWidget {
     private VerticalLayoutContainer container;
     private int marginLeft = WebGenerator.marginLeft;
 
+    static final CheckBox sipCheck = new CheckBox();
+    static final CheckBox callFromOfficeCheck = new CheckBox();
+    static final CheckBox incomingCheck = new CheckBox();
+    static final Radio passesSipRadio = new Radio();
+    static final Radio callFromOfficePassesRadio = new Radio();
+    static final CheckBox outgoingCheck = new CheckBox();
+    static final Radio notPassSipRadio = new Radio();
+    static final Radio callFromOfficeNoPassesRadio = new Radio();
+    static final TextField moroMoroField = new TextField();
+    static final CheckBox withSpecificNumberCheck = new CheckBox();
+    static final TextField withSpecificNumberField = new TextField();
+    static final Radio numberMatchesRadio = new Radio();
+    static final Radio numberNoMatchesRadio = new Radio();
+    static final CheckBox otherTaCheckBox = new CheckBox();
+    static final Radio hornInTubeYesRadio = new Radio();
+    static final Radio hornInTubeNoRadio = new Radio();
+    static final Radio otherTaYesRadio = new Radio();
+    static final Radio otherTaNoRadio = new Radio();
+    static final CheckBox rebootedAdapterCheck = new CheckBox();
+    static final TextArea samplesIncomingArea = new TextArea();
+    static final TextArea samplesOutgoingArea = new TextArea();
+
     @Override
     public Widget asWidget() {
-        if (container == null){
+        if (container == null) {
             container = new VerticalLayoutContainer();
 
             HorizontalLayoutContainer subContainer1 = new HorizontalLayoutContainer();
@@ -34,15 +58,13 @@ public class NoIncomingOutgoingTab implements IsWidget {
             subContainer1.add(noLabel, new HorizontalLayoutData(0.2, 0, new Margins(0, 0, 0, 0)));
 
 
-            CheckBox sipCheck = new CheckBox();
+
             sipCheck.setBoxLabel("SIP-регистрация:");
             subContainer1.add(sipCheck, new HorizontalLayoutData(0.25, 0, new Margins(0, 0, 0, 0)));
 
 
-            CheckBox callFromOfficeCheck = new CheckBox();
             callFromOfficeCheck.setBoxLabel("Звонок из офиса:");
             subContainer1.add(callFromOfficeCheck, new HorizontalLayoutData(0.25, 0, new Margins(0, 0, 0, 0)));
-
 
 
             Label moroMoroLabel = new Label("Moro-moro:");
@@ -52,24 +74,20 @@ public class NoIncomingOutgoingTab implements IsWidget {
             container.add(subContainer1, new VerticalLayoutData(1, 0, new Margins(10, 0, 0, marginLeft)));
 
 
-
-
             HorizontalLayoutContainer subContainer2 = new HorizontalLayoutContainer();
 
-            CheckBox incomingCheck = new CheckBox();
+
             incomingCheck.setBoxLabel("Входящая");
             subContainer2.add(incomingCheck, new HorizontalLayoutData(0.2, 0, new Margins(0, 0, 0, 0)));
 
 
-            Radio passesSipRadio = new Radio();
+
             passesSipRadio.setBoxLabel("Проходит");
             subContainer2.add(passesSipRadio, new HorizontalLayoutData(0.25, 0, new Margins(0, 0, 0, 0)));
 
 
-            Radio callFromOfficePassesRadio = new Radio();
             callFromOfficePassesRadio.setBoxLabel("Проходит");
             subContainer2.add(callFromOfficePassesRadio, new HorizontalLayoutData(0.25, 0, new Margins(0, 0, 0, 0)));
-
 
 
             Label moroMoroLabel1 = new Label("код ошибки");
@@ -81,37 +99,31 @@ public class NoIncomingOutgoingTab implements IsWidget {
 
             HorizontalLayoutContainer subContainer3 = new HorizontalLayoutContainer();
 
-            CheckBox outgoingCheck = new CheckBox();
+
             outgoingCheck.setBoxLabel("Исходящая");
             subContainer3.add(outgoingCheck, new HorizontalLayoutData(0.2, 0, new Margins(0, 0, 0, 0)));
 
 
-            Radio notPassSipRadio = new Radio();
             notPassSipRadio.setBoxLabel("Не проходит");
             subContainer3.add(notPassSipRadio, new HorizontalLayoutData(0.25, 0, new Margins(0, 0, 0, 0)));
 
 
-            Radio callFromOfficeNoPassesRadio = new Radio();
             callFromOfficeNoPassesRadio.setBoxLabel("Не проходит");
             subContainer3.add(callFromOfficeNoPassesRadio, new HorizontalLayoutData(0.25, 0, new Margins(0, 0, 0, 0)));
 
 
-
-            TextField moroMoroField = new TextField();
             subContainer3.add(moroMoroField, new HorizontalLayoutData(0.13, 0, new Margins(-10, 0, 0, 10)));
 
             container.add(subContainer3, new VerticalLayoutData(1, 0, new Margins(20, 0, 0, marginLeft)));
 
 
-
             HorizontalLayoutContainer subContainer4 = new HorizontalLayoutContainer();
 
-            CheckBox withSpecificNumberCheck = new CheckBox();
+
             withSpecificNumberCheck.setBoxLabel("С конкретным номером:");
             subContainer4.add(withSpecificNumberCheck, new HorizontalLayoutData(0.3, 0, new Margins(5, 0, 0, 0)));
 
 
-            TextField withSpecificNumberField = new TextField();
             subContainer4.add(withSpecificNumberField, new HorizontalLayoutData(0.2, 0, new Margins(0, 0, 0, 0)));
 
 
@@ -122,13 +134,11 @@ public class NoIncomingOutgoingTab implements IsWidget {
             container.add(subContainer4, new VerticalLayoutData(1, 0, new Margins(30, 0, 0, marginLeft)));
 
 
-
-
             HorizontalLayoutContainer subContainer5 = new HorizontalLayoutContainer();
 
-            Label numberInAdapterCheck = new Label("Номер в приложении и в адаптере:");
-            numberInAdapterCheck.setStyleName("label-text");
-            subContainer5.add(numberInAdapterCheck, new HorizontalLayoutData(0.3, 0, new Margins(0, 0, 0, 0)));
+            Label numberInAdapterLabel = new Label("Номер в приложении и в адаптере:");
+            numberInAdapterLabel.setStyleName("label-text");
+            subContainer5.add(numberInAdapterLabel, new HorizontalLayoutData(0.3, 0, new Margins(0, 0, 0, 0)));
 
 
             Label samplesIncomingLabel = new Label("Входящие:");
@@ -143,19 +153,15 @@ public class NoIncomingOutgoingTab implements IsWidget {
             container.add(subContainer5, new VerticalLayoutData(1, 0, new Margins(40, 0, 0, marginLeft)));
 
 
-
-
             HorizontalLayoutContainer subContainer6 = new HorizontalLayoutContainer();
 
             VerticalLayoutContainer verticalLayoutContainer = new VerticalLayoutContainer();
 
 
-            Radio numberMatchesRadio = new Radio();
             numberMatchesRadio.setBoxLabel("Совпадают");
             verticalLayoutContainer.add(numberMatchesRadio, new VerticalLayoutData(0.5, 0, new Margins(0, 0, 0, 0)));
 
 
-            Radio numberNoMatchesRadio = new Radio();
             numberNoMatchesRadio.setBoxLabel("Не совпадают");
             verticalLayoutContainer.add(numberNoMatchesRadio, new VerticalLayoutData(0.7, 0, new Margins(0, 0, 0, 90)));
 
@@ -170,7 +176,8 @@ public class NoIncomingOutgoingTab implements IsWidget {
             hornInTubeLabel.setStyleName("label-text");
             subContainer7.add(hornInTubeLabel, new HorizontalLayoutData(0.5, 0, new Margins(0, 0, 0, 0)));
 
-            CheckBox otherTaCheckBox = new CheckBox();
+
+
             otherTaCheckBox.setBoxLabel("Другой ТА:");
             subContainer7.add(otherTaCheckBox, new HorizontalLayoutData(0.5, 0, new Margins(0, 0, 0, 0)));
 
@@ -180,11 +187,11 @@ public class NoIncomingOutgoingTab implements IsWidget {
             HorizontalLayoutContainer subContainer8 = new HorizontalLayoutContainer();
 
 
-            Radio hornInTubeYesRadio = new Radio();
             hornInTubeYesRadio.setBoxLabel("Есть");
             subContainer8.add(hornInTubeYesRadio, new HorizontalLayoutData(0.2, 0, new Margins(0, 0, 0, 0)));
 
-            Radio hornInTubeNoRadio = new Radio();
+
+
             hornInTubeNoRadio.setBoxLabel("Нет");
             subContainer8.add(hornInTubeNoRadio, new HorizontalLayoutData(0.2, 0, new Margins(0, 0, 0, 0)));
 
@@ -193,11 +200,10 @@ public class NoIncomingOutgoingTab implements IsWidget {
             group.add(hornInTubeNoRadio);
 
 
-            Radio otherTaYesRadio = new Radio();
             otherTaYesRadio.setBoxLabel("Есть");
             subContainer8.add(otherTaYesRadio, new HorizontalLayoutData(0.3, 0, new Margins(0, 0, 0, 28)));
 
-            Radio otherTaNoRadio = new Radio();
+
             otherTaNoRadio.setBoxLabel("Нет");
             subContainer8.add(otherTaNoRadio, new HorizontalLayoutData(0.25, 0, new Margins(0, 0, 0, 0)));
 
@@ -208,7 +214,8 @@ public class NoIncomingOutgoingTab implements IsWidget {
 
             verticalLayoutContainer.add(subContainer8, new VerticalLayoutData(1, 0, new Margins(20, 0, 0, 0)));
 
-            CheckBox rebootedAdapterCheck = new CheckBox();
+
+
             rebootedAdapterCheck.setBoxLabel("Адаптер перезагружали");
             verticalLayoutContainer.add(rebootedAdapterCheck, new VerticalLayoutData(1, 0, new Margins(40, 0, 0, 0)));
 
@@ -216,16 +223,166 @@ public class NoIncomingOutgoingTab implements IsWidget {
             subContainer6.add(verticalLayoutContainer, new HorizontalLayoutData(0.5, 0, new Margins(0, 0, 0, 0)));
 
 
-
-            TextArea samplesIncomingArea = new TextArea();
             samplesIncomingArea.setWidth(30);
             subContainer6.add(samplesIncomingArea, new HorizontalLayoutData(0.14, 1, new Margins(-15, 0, 0, 8)));
 
-            TextArea samplesOutgoingArea = new TextArea();
+
+
             subContainer6.add(samplesOutgoingArea, new HorizontalLayoutData(0.157, 1, new Margins(-15, 0, 0, 18)));
 
             container.add(subContainer6, new VerticalLayoutData(1, 0.25, new Margins(20, 0, 0, marginLeft)));
 
+            ToggleGroup group2 = new ToggleGroup();
+            group2.add(passesSipRadio);
+            group2.add(notPassSipRadio);
+
+            passesSipRadio.setEnabled(false);
+            passesSipRadio.setValue(true);
+            notPassSipRadio.setEnabled(false);
+
+            sipCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (sipCheck.getValue()) {
+                        notPassSipRadio.setEnabled(true);
+                        passesSipRadio.setEnabled(true);
+                    } else {
+                        passesSipRadio.setEnabled(false);
+                        notPassSipRadio.setEnabled(false);
+                    }
+                }
+            });
+
+            ToggleGroup group3 = new ToggleGroup();
+            group3.add(callFromOfficeNoPassesRadio);
+            group3.add(callFromOfficePassesRadio);
+
+            callFromOfficeNoPassesRadio.setEnabled(false);
+            callFromOfficePassesRadio.setEnabled(false);
+            callFromOfficePassesRadio.setValue(true);
+
+            callFromOfficeCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (callFromOfficeCheck.getValue()) {
+                        callFromOfficeNoPassesRadio.setEnabled(true);
+                        callFromOfficePassesRadio.setEnabled(true);
+                    } else {
+                        callFromOfficeNoPassesRadio.setEnabled(false);
+                        callFromOfficePassesRadio.setEnabled(false);
+                    }
+                }
+            });
+
+            withSpecificNumberField.setEnabled(false);
+
+            withSpecificNumberCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (withSpecificNumberCheck.getValue()) {
+                        withSpecificNumberField.setEnabled(true);
+                    } else {
+                        withSpecificNumberField.setEnabled(false);
+                    }
+                }
+            });
+
+            numberMatchesRadio.setEnabled(false);
+            numberMatchesRadio.setValue(true);
+            numberNoMatchesRadio.setEnabled(false);
+            samplesIncomingArea.setEnabled(false);
+
+            incomingCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (incomingCheck.getValue() && !outgoingCheck.getValue()) {
+                        numberMatchesRadio.setEnabled(true);
+                        numberNoMatchesRadio.setEnabled(true);
+                        hornInTubeYesRadio.setEnabled(false);
+                        hornInTubeNoRadio.setEnabled(false);
+                    } else if (incomingCheck.getValue() && outgoingCheck.getValue()) {
+                        numberMatchesRadio.setEnabled(false);
+                        numberNoMatchesRadio.setEnabled(false);
+                        hornInTubeYesRadio.setEnabled(true);
+                        hornInTubeNoRadio.setEnabled(true);
+                    } else {
+                        numberMatchesRadio.setEnabled(false);
+                        numberNoMatchesRadio.setEnabled(false);
+                        hornInTubeYesRadio.setEnabled(false);
+                        hornInTubeNoRadio.setEnabled(false);
+                    }
+                    if (incomingCheck.getValue()) {
+                        samplesIncomingArea.setEnabled(true);
+                    } else {
+                        samplesIncomingArea.setEnabled(false);
+                        samplesIncomingArea.setText("");
+                    }
+                    if (outgoingCheck.getValue()) {
+                        samplesOutgoingArea.setEnabled(true);
+                    } else {
+                        samplesOutgoingArea.setEnabled(false);
+                        samplesOutgoingArea.setText("");
+                    }
+
+
+                }
+            });
+            samplesOutgoingArea.setEnabled(false);
+
+            hornInTubeNoRadio.setEnabled(false);
+            hornInTubeYesRadio.setEnabled(false);
+            hornInTubeYesRadio.setValue(true);
+
+            outgoingCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (incomingCheck.getValue() && !outgoingCheck.getValue()) {
+                        numberMatchesRadio.setEnabled(true);
+                        numberNoMatchesRadio.setEnabled(true);
+                        hornInTubeYesRadio.setEnabled(false);
+                        hornInTubeNoRadio.setEnabled(false);
+                    } else if (incomingCheck.getValue() && outgoingCheck.getValue()) {
+                        numberMatchesRadio.setEnabled(false);
+                        numberNoMatchesRadio.setEnabled(false);
+                        hornInTubeYesRadio.setEnabled(true);
+                        hornInTubeNoRadio.setEnabled(true);
+                    } else {
+                        numberMatchesRadio.setEnabled(false);
+                        numberNoMatchesRadio.setEnabled(false);
+                        hornInTubeYesRadio.setEnabled(false);
+                        hornInTubeNoRadio.setEnabled(false);
+                    }
+                    if (incomingCheck.getValue()) {
+                        samplesIncomingArea.setEnabled(true);
+                    } else {
+                        samplesIncomingArea.setEnabled(false);
+                        samplesIncomingArea.setText("");
+                    }
+                    if (outgoingCheck.getValue()) {
+                        samplesOutgoingArea.setEnabled(true);
+                    } else {
+                        samplesOutgoingArea.setEnabled(false);
+                        samplesOutgoingArea.setText("");
+                    }
+                }
+            });
+
+            otherTaYesRadio.setEnabled(false);
+            otherTaYesRadio.setValue(true);
+            otherTaNoRadio.setEnabled(false);
+
+            otherTaCheckBox.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (otherTaCheckBox.getValue()){
+                        otherTaYesRadio.setEnabled(true);
+                        otherTaNoRadio.setEnabled(true);
+                    } else {
+                        otherTaYesRadio.setEnabled(false);
+                        otherTaNoRadio.setEnabled(false);
+                    }
+                }
+            });
         }
         return container;
     }

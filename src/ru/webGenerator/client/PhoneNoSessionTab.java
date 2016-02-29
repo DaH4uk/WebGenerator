@@ -19,6 +19,12 @@ public class PhoneNoSessionTab implements IsWidget {
     private VerticalLayoutContainer container;
     private int marginLeft = WebGenerator.marginLeft;
 
+    static final Radio operStatusDownRadio = new Radio();
+    static final Radio operStatusUpRadio = new Radio();
+    static final CheckBox adapterRebootedCheck = new CheckBox();
+    static final Radio macAdrVisibleNoRadio = new Radio();
+    static final Radio macAdrVisibleYesRadio = new Radio();
+
     @Override
     public Widget asWidget() {
         if (container == null){
@@ -36,10 +42,10 @@ public class PhoneNoSessionTab implements IsWidget {
             subContainer1.add(operStatusLabel, new VerticalLayoutData(1, 0.1, new Margins(0, 0, 0, 0)));
 
 
-            Radio operStatusDownRadio = new Radio();
+
             operStatusDownRadio.setBoxLabel("Down");
 
-            Radio operStatusUpRadio = new Radio();
+
             operStatusUpRadio.setBoxLabel("Up");
 
             ToggleGroup group = new ToggleGroup();
@@ -64,9 +70,8 @@ public class PhoneNoSessionTab implements IsWidget {
             subContainer1.add(label1, new VerticalLayoutData(1, 0.1, new Margins(5, 0, 0, 130)));
 
 
-            CheckBox onMultipleChannelsCheck = new CheckBox();
-            onMultipleChannelsCheck.setBoxLabel("Адаптер перезагружали");
-            subContainer1.add(onMultipleChannelsCheck, new VerticalLayoutData(1, 0.1, new Margins(130, 0, 0, 0)));
+            adapterRebootedCheck.setBoxLabel("Адаптер перезагружали");
+            subContainer1.add(adapterRebootedCheck, new VerticalLayoutData(1, 0.1, new Margins(110, 0, 0, 0)));
 
 
 
@@ -77,10 +82,9 @@ public class PhoneNoSessionTab implements IsWidget {
 
 
 
-            Radio macAdrVisibleNoRadio = new Radio();
             macAdrVisibleNoRadio.setBoxLabel("Нет");
 
-            Radio macAdrVisibleYesRadio = new Radio();
+
             macAdrVisibleYesRadio.setBoxLabel("Да");
 
             ToggleGroup group1 = new ToggleGroup();

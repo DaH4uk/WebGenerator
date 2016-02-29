@@ -9,6 +9,9 @@
         </element>
         <element id="directory" name="lib">
           <element id="file-copy" path="$USER_HOME$/Desktop/java/gwt-2.7.0/gwt-servlet.jar" />
+          <element id="library" level="project" name="gwt-user" />
+          <element id="library" level="project" name="gxt-theme-triton" />
+          <element id="library" level="project" name="gxt" />
         </element>
       </element>
       <element id="gwt-compiler-output" facet="WebGenerator/gwt/GWT" />

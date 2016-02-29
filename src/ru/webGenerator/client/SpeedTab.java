@@ -1,9 +1,8 @@
 package ru.webGenerator.client;
 
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -13,9 +12,7 @@ import com.sencha.gxt.data.shared.StringLabelProvider;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
-import com.sencha.gxt.widget.core.client.form.CheckBox;
-import com.sencha.gxt.widget.core.client.form.SimpleComboBox;
-import com.sencha.gxt.widget.core.client.form.TextField;
+import com.sencha.gxt.widget.core.client.form.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +29,40 @@ public class SpeedTab implements IsWidget {
     private List<String> cities = new ArrayList<>();
 
 
+    static final CheckBox speedOnSpeedTestCheck = new CheckBox();
+    static final CheckBox externalResourceCheck = new CheckBox();
+    static final TextField externalResourceNameField = new TextField();
+    static final IntegerField externalResourceSizeField = new IntegerField();
+    static final IntegerField externalResourceSentField = new IntegerField();
+    static final IntegerField externalResourceReceivedField = new IntegerField();
+    static final DoubleField speedTestDownloadField = new DoubleField();
+    static final DoubleField speedTestUploadField = new DoubleField();
+    static final CheckBox stCheck = new CheckBox();
+    static final IntegerField stSizeField = new IntegerField();
+    static final IntegerField stSentField = new IntegerField();
+    static final IntegerField stReceivedField = new IntegerField();
+    static final DoubleField speedTestMustBeField = new DoubleField();
+    static final CheckBox commutatorCheck = new CheckBox();
+    static final IntegerField commutatorSizeField = new IntegerField();
+    static final IntegerField commutatorSentField = new IntegerField();
+    static final IntegerField commutatorReceivedField = new IntegerField();
+    static final CheckBox iperfCheck = new CheckBox();
+    static final TextField commutatorIpField = new TextField();
+    static final TextField portField = new TextField();
+    static final TextField speedIperfField = new TextField();
+    static final SimpleComboBox<String> cityIperfComboBox = new SimpleComboBox<String>(new StringLabelProvider<String>());
+    static final CheckBox clientCheck = new CheckBox();
+    static final IntegerField clientSizeField = new IntegerField();
+    static final IntegerField clientSentField = new IntegerField();
+    static final IntegerField clientReceivedField = new IntegerField();
+    static final IntegerField errorsField = new IntegerField();
+    static final CheckBox increaseErrorsCheck = new CheckBox();
+    static final CheckBox routerDefectiveCheck = new CheckBox();
+    static final CheckBox difficultWithWifiCheck = new CheckBox();
+    static final SimpleComboBox<String> complexityRouterCombo = new SimpleComboBox<String>(new StringLabelProvider<String>());
+    static final CheckBox routerReplacementCheck = new CheckBox();
+    static final CheckBox softDisabledCheck = new CheckBox();
+    static final CheckBox problemPortCheck = new CheckBox();
 
     @Override
     public Widget asWidget() {
@@ -79,7 +110,7 @@ public class SpeedTab implements IsWidget {
             Label lossLabel = new Label("Потери при пинге");
             lossLabel.setStyleName("label-text");
 
-            CheckBox speedOnSpeedTestCheck = new CheckBox();
+
             speedOnSpeedTestCheck.setBoxLabel("Скорость (Speedtest):");
 
             HorizontalLayoutContainer horizontalContainer1 = new HorizontalLayoutContainer();
@@ -114,23 +145,19 @@ public class SpeedTab implements IsWidget {
 
             container.add(horizontalContainer2, new VerticalLayoutData(1, 0, new Margins(20, 0, 0, marginLeft)));
 
-            CheckBox externalResourceCheck = new CheckBox();
             externalResourceCheck.setBoxLabel("До ");
 
 
-            TextField externalResourceNameField = new TextField();
             externalResourceNameField.setValue("ya.ru");
 
-            TextField externalResourceSizeField = new TextField();
-            externalResourceSizeField.setValue("1400");
+            externalResourceSizeField.setValue(1400);
 
-            TextField externalResourceSentField = new TextField();
-            externalResourceSentField.setValue("30");
+            externalResourceSentField.setValue(30);
 
-            TextField externalResourceReceivedField = new TextField();
 
-            TextField speedTestDownloadField = new TextField();
-            TextField speedTestUploadField = new TextField();
+            speedTestDownloadField.setFormat(NumberFormat.getFormat("0.00"));
+
+            speedTestUploadField.setFormat(NumberFormat.getFormat("0.00"));
 
             HorizontalLayoutContainer horizontalContainer3 = new HorizontalLayoutContainer();
 
@@ -145,22 +172,18 @@ public class SpeedTab implements IsWidget {
             container.add(horizontalContainer3, new VerticalLayoutData(1, 0, new Margins(20, 0, 0, marginLeft)));
 
 
-
-            CheckBox stCheck = new CheckBox();
             stCheck.setBoxLabel("До ST:");
 
 
-            TextField stSizeField = new TextField();
-            stSizeField.setValue("1400");
+            stSizeField.setValue(1400);
 
-            TextField stSentField = new TextField();
-            stSentField.setValue("30");
 
-            TextField stReceivedField = new TextField();
+            stSentField.setValue(30);
+
 
             Label mustStLabel = new Label("Д/быть:");
             mustStLabel.addStyleName("labels");
-            TextField speedTestMustBeField = new TextField();
+
 
             HorizontalLayoutContainer horizontalContainer4 = new HorizontalLayoutContainer();
 
@@ -174,21 +197,15 @@ public class SpeedTab implements IsWidget {
             container.add(horizontalContainer4, new VerticalLayoutData(1, 0, new Margins(40, 0, 0, marginLeft)));
 
 
-            CheckBox commutatorCheck = new CheckBox();
             commutatorCheck.setBoxLabel("До коммутатора:");
 
 
-            TextField commutatorSizeField = new TextField();
-            commutatorSizeField.setValue("1400");
+            commutatorSizeField.setValue(1200);
 
-            TextField commutatorSentField = new TextField();
-            commutatorSentField.setValue("30");
+            commutatorSentField.setValue(30);
 
-            TextField commutatorReceivedField = new TextField();
 
-            CheckBox iperfCheck = new CheckBox();
             iperfCheck.setBoxLabel("Скорость по Iperf:");
-
 
 
             HorizontalLayoutContainer horizontalContainer5 = new HorizontalLayoutContainer();
@@ -209,36 +226,29 @@ public class SpeedTab implements IsWidget {
 
             HorizontalLayoutContainer horizontalContainer6 = new HorizontalLayoutContainer();
 
-            horizontalContainer6.add(speedSubTableLabel, new HorizontalLayoutData(0.22, 0, new Margins(15, 0, 0,385)));
+            horizontalContainer6.add(speedSubTableLabel, new HorizontalLayoutData(0.22, 0, new Margins(15, 0, 0, 385)));
             horizontalContainer6.add(citySubTableLabel, new HorizontalLayoutData(0.2, 0, new Margins(15, 0, 0, 310)));
 
 
             container.add(horizontalContainer6, new VerticalLayoutData(1, 0, new Margins(20, 0, 0, marginLeft)));
 
 
-
-
             Label ipLabel = new Label("IP:");
             ipLabel.setStyleName("labels");
 
-            TextField commutatorIpField = new TextField();
             commutatorIpField.setValue("0.0.0.0");
 
             Label portLabel = new Label("Порт:");
             portLabel.setStyleName("labels");
 
 
-            TextField portField = new TextField();
-
-
-            TextField speedIperfField = new TextField();
             speedIperfField.setWidth(50);
+//            speedIperfField.setFormat(NumberFormat.getFormat("0.00"));
 
-            SimpleComboBox<String> cityIperfComboBox = new SimpleComboBox<String>(new StringLabelProvider<String>());
+
             cityIperfComboBox.setTriggerAction(ComboBoxCell.TriggerAction.ALL);
             cityIperfComboBox.setEditable(true);
             cityIperfComboBox.add(cities);
-
 
 
             HorizontalLayoutContainer horizontalContainer7 = new HorizontalLayoutContainer();
@@ -253,22 +263,16 @@ public class SpeedTab implements IsWidget {
             container.add(horizontalContainer7, new VerticalLayoutData(1, 0, new Margins(20, 0, 0, marginLeft)));
 
 
-
-            CheckBox clientCheck = new CheckBox();
             clientCheck.setBoxLabel("До клиента:");
 
 
-            TextField clientSizeField = new TextField();
-            clientSizeField.setValue("1400");
+            clientSizeField.setValue(1200);
 
-            TextField clientSentField = new TextField();
-            clientSentField.setValue("30");
+            clientSentField.setValue(30);
 
-            TextField clientReceivedField = new TextField();
 
             Label label = new Label("Измерения в мбит/с");
             label.setStyleName("labels");
-
 
 
             HorizontalLayoutContainer horizontalContainer8 = new HorizontalLayoutContainer();
@@ -282,22 +286,16 @@ public class SpeedTab implements IsWidget {
             container.add(horizontalContainer8, new VerticalLayoutData(1, 0, new Margins(40, 0, 0, marginLeft)));
 
 
-
-
             Label errorsLabel = new Label("Ошибок на порту");
             errorsLabel.setStyleName("labels");
 
 
-            TextField errorsField = new TextField();
-            errorsField.setValue("0");
+            errorsField.setValue(0);
 
-            CheckBox increaseErrorsCheck = new CheckBox();
+
             increaseErrorsCheck.setBoxLabel("Растут");
 
-            CheckBox routerDefectiveCheck = new CheckBox();
             routerDefectiveCheck.setBoxLabel("Роутер неисправен (напрямую все ОК)");
-
-
 
 
             HorizontalLayoutContainer horizontalContainer9 = new HorizontalLayoutContainer();
@@ -309,11 +307,10 @@ public class SpeedTab implements IsWidget {
 
             container.add(horizontalContainer9, new VerticalLayoutData(1, 0, new Margins(40, 0, 0, marginLeft)));
 
-            CheckBox complexityRouterCheck = new CheckBox();
-            complexityRouterCheck.setBoxLabel("Сложность с Wi-Fi:");
+
+            difficultWithWifiCheck.setBoxLabel("Сложность с Wi-Fi:");
 
 
-            SimpleComboBox<String> complexityRouterCombo = new SimpleComboBox<String>(new StringLabelProvider<String>());
             complexityRouterCombo.setTriggerAction(ComboBoxCell.TriggerAction.ALL);
             complexityRouterCombo.setEditable(true);
             complexityRouterCombo.add("Низкий уровень сигнала");
@@ -321,28 +318,167 @@ public class SpeedTab implements IsWidget {
             complexityRouterCombo.setValue("Низкий уровень сигнала");
 
 
-            CheckBox routerReplacementCheck = new CheckBox();
             routerReplacementCheck.setBoxLabel("Замена роутера");
-
-
-
-
 
 
             HorizontalLayoutContainer horizontalContainer10 = new HorizontalLayoutContainer();
 
-            horizontalContainer10.add(complexityRouterCheck, new HorizontalLayoutData(0.24, 0, new Margins(15, 0, 0, 0)));
+            horizontalContainer10.add(difficultWithWifiCheck, new HorizontalLayoutData(0.24, 0, new Margins(15, 0, 0, 0)));
             horizontalContainer10.add(complexityRouterCombo, new HorizontalLayoutData(0.36, 0, new Margins(5, 0, 0, 20)));
             horizontalContainer10.add(routerReplacementCheck, new HorizontalLayoutData(0.15, 0, new Margins(15, 0, 0, 20)));
 
-            container.add(horizontalContainer10, new VerticalLayoutData(1, 0, new Margins(90, 0, 0, marginLeft)));
+            container.add(horizontalContainer10, new VerticalLayoutData(1, 0, new Margins(40, 0, 0, marginLeft)));
 
-            CheckBox softDisabledCheck = new CheckBox();
+
             softDisabledCheck.setBoxLabel("Защитное ПО, торренты, закачки отключили");
 
             container.add(softDisabledCheck, new VerticalLayoutData(1, 0, new Margins(50, 0, 0, marginLeft)));
 
+            problemPortCheck.setBoxLabel("Клиент попал в отчет по проблемным портам");
+
+            container.add(problemPortCheck, new VerticalLayoutData(1, 0, new Margins(10, 0, 0, marginLeft)));
+
+            externalResourceNameField.setEnabled(false);
+            externalResourceReceivedField.setEnabled(false);
+            externalResourceSentField.setEnabled(false);
+            externalResourceSizeField.setEnabled(false);
+
+
+            externalResourceCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (externalResourceCheck.getValue()) {
+                        externalResourceNameField.setEnabled(true);
+                        externalResourceReceivedField.setEnabled(true);
+                        externalResourceSentField.setEnabled(true);
+                        externalResourceSizeField.setEnabled(true);
+                    } else {
+                        externalResourceNameField.setEnabled(false);
+                        externalResourceReceivedField.setEnabled(false);
+                        externalResourceSentField.setEnabled(false);
+                        externalResourceSizeField.setEnabled(false);
+                    }
+                }
+            });
+
+            stReceivedField.setEnabled(false);
+            stSentField.setEnabled(false);
+            stSizeField.setEnabled(false);
+
+            stCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (stCheck.getValue()) {
+                        stReceivedField.setEnabled(true);
+                        stSentField.setEnabled(true);
+                        stSizeField.setEnabled(true);
+                    } else {
+                        stReceivedField.setEnabled(false);
+                        stSentField.setEnabled(false);
+                        stSizeField.setEnabled(false);
+                    }
+                }
+            });
+
+
+            commutatorIpField.setEnabled(false);
+            commutatorReceivedField.setEnabled(false);
+            commutatorSentField.setEnabled(false);
+            commutatorSizeField.setEnabled(false);
+            portField.setEnabled(false);
+
+            commutatorCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (commutatorCheck.getValue()) {
+                        commutatorIpField.setEnabled(true);
+                        commutatorReceivedField.setEnabled(true);
+                        commutatorSentField.setEnabled(true);
+                        commutatorSizeField.setEnabled(true);
+                        portField.setEnabled(true);
+                    } else {
+                        commutatorIpField.setEnabled(false);
+                        commutatorReceivedField.setEnabled(false);
+                        commutatorSentField.setEnabled(false);
+                        commutatorSizeField.setEnabled(false);
+                        portField.setEnabled(false);
+                    }
+                }
+            });
+            clientReceivedField.setEnabled(false);
+            clientSentField.setEnabled(false);
+            clientSizeField.setEnabled(false);
+
+            clientCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (clientCheck.getValue()) {
+                        clientReceivedField.setEnabled(true);
+                        clientSentField.setEnabled(true);
+                        clientSizeField.setEnabled(true);
+                    } else {
+                        clientReceivedField.setEnabled(false);
+                        clientSentField.setEnabled(false);
+                        clientSizeField.setEnabled(false);
+                    }
+                }
+            });
+
+            speedTestDownloadField.setEnabled(false);
+            speedTestUploadField.setEnabled(false);
+            speedTestMustBeField.setEnabled(false);
+
+            speedOnSpeedTestCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (speedOnSpeedTestCheck.getValue()) {
+                        speedTestDownloadField.setEnabled(true);
+                        speedTestUploadField.setEnabled(true);
+                        speedTestMustBeField.setEnabled(true);
+                    } else {
+                        speedTestDownloadField.setEnabled(false);
+                        speedTestUploadField.setEnabled(false);
+                        speedTestMustBeField.setEnabled(false);
+                    }
+                }
+            });
+
+            speedIperfField.setEnabled(false);
+            cityIperfComboBox.setEnabled(false);
+
+            iperfCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (iperfCheck.getValue()) {
+                        speedIperfField.setEnabled(true);
+                        cityIperfComboBox.setEnabled(true);
+                    } else {
+                        speedIperfField.setEnabled(false);
+                        cityIperfComboBox.setEnabled(false);
+                    }
+                }
+            });
+
+            difficultWithWifiCheck.setEnabled(false);
+            complexityRouterCombo.setEnabled(false);
+            routerReplacementCheck.setEnabled(false);
+
+            routerDefectiveCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (routerDefectiveCheck.getValue()) {
+                        difficultWithWifiCheck.setEnabled(true);
+                        complexityRouterCombo.setEnabled(true);
+                        routerReplacementCheck.setEnabled(true);
+                    } else {
+                        difficultWithWifiCheck.setEnabled(false);
+                        complexityRouterCombo.setEnabled(false);
+                        routerReplacementCheck.setEnabled(false);
+                    }
+                }
+            });
         }
+
 
         return container;
     }
