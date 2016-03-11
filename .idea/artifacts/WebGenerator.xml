@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="WebGenerator">
+    <output-path>$PROJECT_DIR$/out/artifacts/WebGenerator</output-path>
+    <root id="archive" name="WebGenerator.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="gxt" />
+          <element id="library" level="project" name="gwt-user" />
+          <element id="library" level="project" name="gxt-theme-triton" />
+        </element>
+        <element id="directory" name="classes">
+          <element id="module-output" name="WebGenerator" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="WebGenerator/web/Web" />
+      <element id="gwt-compiler-output" facet="WebGenerator/gwt/GWT" />
+    </root>
+  </artifact>
+</component>

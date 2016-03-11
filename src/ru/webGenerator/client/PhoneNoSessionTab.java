@@ -71,7 +71,7 @@ public class PhoneNoSessionTab implements IsWidget {
 
 
             adapterRebootedCheck.setBoxLabel("Адаптер перезагружали");
-            subContainer1.add(adapterRebootedCheck, new VerticalLayoutData(1, 0.1, new Margins(110, 0, 0, 0)));
+            subContainer1.add(adapterRebootedCheck, new VerticalLayoutData(1, 0.1, new Margins(100, 0, 0, 0)));
 
 
 

@@ -128,8 +128,25 @@ public class DigitalTvTab implements IsWidget {
 
 
             analogTvYesRadio.setBoxLabel("Да");
+            analogTvYesRadio.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (analogTvYesRadio.getValue()){
+                        analogTvNoRadio.setValue(false);
+                    }
+                }
+            });
 
             analogTvNoRadio.setBoxLabel("Нет");
+            analogTvNoRadio.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (analogTvNoRadio.getValue()){
+                        analogTvYesRadio.setValue(false);
+                    }
+                }
+            });
+
 
             ToggleGroup group1 = new ToggleGroup();
             group1.add(analogTvYesRadio);
@@ -150,6 +167,14 @@ public class DigitalTvTab implements IsWidget {
 
 
             decoderCheck.setBoxLabel("Декодер:");
+            decoderCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (decoderCheck.getValue()){
+                        camCheck.setValue(false);
+                    }
+                }
+            });
             subContainer2.add(decoderCheck, new VerticalLayoutData(1, 0.1, new Margins(0, 0, 0, 0)));
 
 
@@ -162,6 +187,16 @@ public class DigitalTvTab implements IsWidget {
 
 
             camCheck.setBoxLabel("САМ-модуль:");
+
+            camCheck.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (camCheck.getValue()){
+                        decoderCheck.setValue(false);
+                    }
+                }
+            });
+
             subContainer2.add(camCheck, new VerticalLayoutData(1, 0.1, new Margins(20, 0, 0, 0)));
 
             ToggleGroup group = new ToggleGroup();

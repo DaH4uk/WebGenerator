@@ -329,14 +329,18 @@ public class SpeedTab implements IsWidget {
 
             container.add(horizontalContainer10, new VerticalLayoutData(1, 0, new Margins(40, 0, 0, marginLeft)));
 
+            HorizontalLayoutContainer horizontalContainer11 = new HorizontalLayoutContainer();
 
-            softDisabledCheck.setBoxLabel("Защитное ПО, торренты, закачки отключили");
+            softDisabledCheck.setBoxLabel("Защитное ПО, торренты и пр. отключили");
 
-            container.add(softDisabledCheck, new VerticalLayoutData(1, 0, new Margins(50, 0, 0, marginLeft)));
 
-            problemPortCheck.setBoxLabel("Клиент попал в отчет по проблемным портам");
 
-            container.add(problemPortCheck, new VerticalLayoutData(1, 0, new Margins(10, 0, 0, marginLeft)));
+            problemPortCheck.setBoxLabel("Клиент попал в отчет по пр. портам");
+
+            horizontalContainer11.add(softDisabledCheck, new HorizontalLayoutData(0.5, 0, new Margins(0, 0, 0, 0)));
+            horizontalContainer11.add(problemPortCheck, new HorizontalLayoutData(0.5, 0, new Margins(0, 0, 0, 0)));
+
+            container.add(horizontalContainer11, new VerticalLayoutData(1, 0, new Margins(50, 0, 0, marginLeft)));
 
             externalResourceNameField.setEnabled(false);
             externalResourceReceivedField.setEnabled(false);

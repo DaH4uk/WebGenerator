@@ -58,7 +58,6 @@ public class NoIncomingOutgoingTab implements IsWidget {
             subContainer1.add(noLabel, new HorizontalLayoutData(0.2, 0, new Margins(0, 0, 0, 0)));
 
 
-
             sipCheck.setBoxLabel("SIP-регистрация:");
             subContainer1.add(sipCheck, new HorizontalLayoutData(0.25, 0, new Margins(0, 0, 0, 0)));
 
@@ -81,12 +80,27 @@ public class NoIncomingOutgoingTab implements IsWidget {
             subContainer2.add(incomingCheck, new HorizontalLayoutData(0.2, 0, new Margins(0, 0, 0, 0)));
 
 
-
             passesSipRadio.setBoxLabel("Проходит");
+            passesSipRadio.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (passesSipRadio.getValue()) {
+                        notPassSipRadio.setValue(false);
+                    }
+                }
+            });
             subContainer2.add(passesSipRadio, new HorizontalLayoutData(0.25, 0, new Margins(0, 0, 0, 0)));
 
 
             callFromOfficePassesRadio.setBoxLabel("Проходит");
+            callFromOfficePassesRadio.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (callFromOfficePassesRadio.getValue()) {
+                        callFromOfficeNoPassesRadio.setValue(false);
+                    }
+                }
+            });
             subContainer2.add(callFromOfficePassesRadio, new HorizontalLayoutData(0.25, 0, new Margins(0, 0, 0, 0)));
 
 
@@ -105,10 +119,26 @@ public class NoIncomingOutgoingTab implements IsWidget {
 
 
             notPassSipRadio.setBoxLabel("Не проходит");
+            notPassSipRadio.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (notPassSipRadio.getValue()) {
+                        passesSipRadio.setValue(false);
+                    }
+                }
+            });
             subContainer3.add(notPassSipRadio, new HorizontalLayoutData(0.25, 0, new Margins(0, 0, 0, 0)));
 
 
             callFromOfficeNoPassesRadio.setBoxLabel("Не проходит");
+            callFromOfficeNoPassesRadio.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (callFromOfficeNoPassesRadio.getValue()) {
+                        callFromOfficePassesRadio.setValue(false);
+                    }
+                }
+            });
             subContainer3.add(callFromOfficeNoPassesRadio, new HorizontalLayoutData(0.25, 0, new Margins(0, 0, 0, 0)));
 
 
@@ -159,10 +189,26 @@ public class NoIncomingOutgoingTab implements IsWidget {
 
 
             numberMatchesRadio.setBoxLabel("Совпадают");
+            numberMatchesRadio.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (numberMatchesRadio.getValue()) {
+                        numberNoMatchesRadio.setValue(false);
+                    }
+                }
+            });
             verticalLayoutContainer.add(numberMatchesRadio, new VerticalLayoutData(0.5, 0, new Margins(0, 0, 0, 0)));
 
 
             numberNoMatchesRadio.setBoxLabel("Не совпадают");
+            numberNoMatchesRadio.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (numberNoMatchesRadio.getValue()) {
+                        numberMatchesRadio.setValue(false);
+                    }
+                }
+            });
             verticalLayoutContainer.add(numberNoMatchesRadio, new VerticalLayoutData(0.7, 0, new Margins(0, 0, 0, 90)));
 
             ToggleGroup toggleGroup = new ToggleGroup();
@@ -177,7 +223,6 @@ public class NoIncomingOutgoingTab implements IsWidget {
             subContainer7.add(hornInTubeLabel, new HorizontalLayoutData(0.5, 0, new Margins(0, 0, 0, 0)));
 
 
-
             otherTaCheckBox.setBoxLabel("Другой ТА:");
             subContainer7.add(otherTaCheckBox, new HorizontalLayoutData(0.5, 0, new Margins(0, 0, 0, 0)));
 
@@ -188,11 +233,28 @@ public class NoIncomingOutgoingTab implements IsWidget {
 
 
             hornInTubeYesRadio.setBoxLabel("Есть");
+            hornInTubeYesRadio.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                                                         @Override
+                                                         public void onValueChange(ValueChangeEvent<Boolean> event) {
+                                                             if (hornInTubeYesRadio.getValue()) {
+                                                                 hornInTubeNoRadio.setValue(false);
+                                                             }
+                                                         }
+                                                     }
+            );
             subContainer8.add(hornInTubeYesRadio, new HorizontalLayoutData(0.2, 0, new Margins(0, 0, 0, 0)));
 
 
-
             hornInTubeNoRadio.setBoxLabel("Нет");
+            hornInTubeNoRadio.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+
+                    if (hornInTubeNoRadio.getValue()){
+                        hornInTubeYesRadio.setValue(false);
+                    }
+                }
+            });
             subContainer8.add(hornInTubeNoRadio, new HorizontalLayoutData(0.2, 0, new Margins(0, 0, 0, 0)));
 
             ToggleGroup group = new ToggleGroup();
@@ -201,10 +263,26 @@ public class NoIncomingOutgoingTab implements IsWidget {
 
 
             otherTaYesRadio.setBoxLabel("Есть");
+            otherTaYesRadio.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (otherTaYesRadio.getValue()){
+                        otherTaNoRadio.setValue(false);
+                    }
+                }
+            });
             subContainer8.add(otherTaYesRadio, new HorizontalLayoutData(0.3, 0, new Margins(0, 0, 0, 28)));
 
 
             otherTaNoRadio.setBoxLabel("Нет");
+            otherTaNoRadio.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    if (otherTaNoRadio.getValue()){
+                        otherTaYesRadio.setValue(false);
+                    }
+                }
+            });
             subContainer8.add(otherTaNoRadio, new HorizontalLayoutData(0.25, 0, new Margins(0, 0, 0, 0)));
 
             ToggleGroup group1 = new ToggleGroup();
@@ -213,7 +291,6 @@ public class NoIncomingOutgoingTab implements IsWidget {
 
 
             verticalLayoutContainer.add(subContainer8, new VerticalLayoutData(1, 0, new Margins(20, 0, 0, 0)));
-
 
 
             rebootedAdapterCheck.setBoxLabel("Адаптер перезагружали");
@@ -225,7 +302,6 @@ public class NoIncomingOutgoingTab implements IsWidget {
 
             samplesIncomingArea.setWidth(30);
             subContainer6.add(samplesIncomingArea, new HorizontalLayoutData(0.14, 1, new Margins(-15, 0, 0, 8)));
-
 
 
             subContainer6.add(samplesOutgoingArea, new HorizontalLayoutData(0.157, 1, new Margins(-15, 0, 0, 18)));
@@ -374,7 +450,7 @@ public class NoIncomingOutgoingTab implements IsWidget {
             otherTaCheckBox.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
                 @Override
                 public void onValueChange(ValueChangeEvent<Boolean> event) {
-                    if (otherTaCheckBox.getValue()){
+                    if (otherTaCheckBox.getValue()) {
                         otherTaYesRadio.setEnabled(true);
                         otherTaNoRadio.setEnabled(true);
                     } else {

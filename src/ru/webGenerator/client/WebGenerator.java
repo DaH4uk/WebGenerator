@@ -80,7 +80,7 @@ public class WebGenerator implements EntryPoint, IsWidget {
             tabPanel.add(internetTabPanel, "Интернет");
             tabPanel.add(domRuTVPanel, "Дом.ru TV");
             tabPanel.add(phoneContainer, "Телефония");
-            tabPanel.add(timerTab, "Напоминание");
+//            tabPanel.add(timerTab, "Напоминание");
 
 
 
@@ -104,7 +104,7 @@ public class WebGenerator implements EntryPoint, IsWidget {
         VerticalLayoutContainer container2 = (VerticalLayoutContainer) new OrderField().asWidget();
         container2.asWidget().setStyleName("main");
         container2.setBorders(true);
-        container2.setPixelSize(600, 430);
+        container2.setPixelSize(600, 350);
 
 
         RootPanel.get().add(container2);

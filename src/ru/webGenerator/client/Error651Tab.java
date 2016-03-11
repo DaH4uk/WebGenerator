@@ -376,7 +376,7 @@ public class Error651Tab implements IsWidget {
 
             container.add(problemPortsCheck, new VerticalLayoutContainer.VerticalLayoutData(0.6, -1, new Margins(15, 0, 0, marginLeft)));
 
-            container.setHeight(850);
+            container.setHeight(820);
 
 
             operStatusUpRadio.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
